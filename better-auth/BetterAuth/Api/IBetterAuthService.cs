@@ -1,8 +1,9 @@
 ﻿using BetterAuth.Api.Requests;
+using BetterAuth.Api.Responses;
 
 namespace BetterAuth.Api;
 
 public interface IBetterAuthService
 {
-    Task HandleSignup(SignupRequest request);
+    Task<SignupResponse> HandleSignup(SignupRequest request, CancellationToken ct = default!);
 }

@@ -1,4 +1,6 @@
-﻿namespace BetterAuth.Configurations;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BetterAuth.Configurations;
 
 internal sealed class BetterAuthOptions
 {
@@ -15,7 +17,8 @@ internal sealed class BetterAuthOptions
 	/// the system will check the following environment variable:
     /// BetterAuthOptions__BETTER_AUTH_URL
     /// </summary>
-    public string? BaseURL { get; set; }
+    [Required]
+    public string BaseURL { get; set; } = default!;
 
     /// <summary>
     /// Base path for the Better Auth. This is typically
@@ -55,20 +58,9 @@ internal sealed class BetterAuthOptions
     public string? Secret { get; set; }
 
     /// <summary>
-    /// Database connection string.
-    /// </summary>
-    public string? Database { get; set; }
-
-    /// <summary>
-    /// Secondary storage connection string.
-    /// This is used to store session and rate limit data.
-    /// </summary>
-    public string? SecondaryStorage { get; set; }
-
-    /// <summary>
     /// Email verification configuration
     /// </summary>
-    public bool? EmailVerification { get; set; }
+    public EmailVerification? EmailVerification { get; set; }
 
     /// <summary>
     /// Email and password authentication
@@ -104,4 +96,9 @@ internal sealed class BetterAuthOptions
     /// List of trusted origins.
     /// </summary>
     public string[]? TrustedOrigins { get; set; }
+
+    /// <summary>
+    /// Advanced options
+    /// </summary>
+    public AdvancedOptions? Advanced { get; set; }
 }

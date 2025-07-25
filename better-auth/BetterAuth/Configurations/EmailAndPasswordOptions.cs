@@ -1,4 +1,6 @@
-﻿namespace BetterAuth.Configurations;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BetterAuth.Configurations;
 
 internal sealed class EmailAndPasswordOptions
 {
@@ -28,9 +30,10 @@ internal sealed class EmailAndPasswordOptions
     /// <summary>
     /// The maximum length of the password.
     /// 
-    /// @default 128
+    /// @default 72
     /// </summary>
-    public int? MaxPasswordLength { get; set; } = 128;
+    [Range(1, 72)]
+    public int? MaxPasswordLength { get; set; } = 72;
 
     /// <summary>
     /// The minimum length of the password.
