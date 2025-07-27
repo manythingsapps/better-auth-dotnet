@@ -1,6 +1,6 @@
 ﻿namespace BetterAuth.Configurations;
 
-internal sealed class EmailAndPasswordOptions
+public sealed class EmailAndPasswordOptions
 {
     /// <summary>
     /// Enable email and password authentication
@@ -28,9 +28,9 @@ internal sealed class EmailAndPasswordOptions
     /// <summary>
     /// The maximum length of the password.
     /// 
-    /// @default 128
+    /// @default 70
     /// </summary>
-    public int? MaxPasswordLength { get; set; } = 128;
+    public int? MaxPasswordLength { get; set; } = 70;
 
     /// <summary>
     /// The minimum length of the password.
@@ -38,6 +38,13 @@ internal sealed class EmailAndPasswordOptions
     /// @default 8
     /// </summary>
     public int? MinPasswordLength { get; set; } = 8;
+
+    /// <summary>
+    /// Number of seconds the reset password token is valid for.
+    /// 
+    /// @default 1 hour (60 * 60)
+    /// </summary>
+    public int? ResetPasswordTokenExpiresIn { get; set; } = (60 * 60);
 
     /// <summary>
     /// Automatically sign in the user after sign up

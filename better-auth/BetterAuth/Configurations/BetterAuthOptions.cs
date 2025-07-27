@@ -1,10 +1,10 @@
 ﻿namespace BetterAuth.Configurations;
 
-internal sealed class BetterAuthOptions
+public sealed class BetterAuthOptions
 {
     /// <summary>
     /// The name of the application
-    /// BetterAuthOptions__APP_NAME
+    /// BetterAuthOptions__AppName
     /// </summary>
     public string? AppName { get; set; } = "Better Auth";
 
@@ -13,7 +13,7 @@ internal sealed class BetterAuthOptions
 	/// root URL where your application server is hosted.
     /// If not explicitly set,
 	/// the system will check the following environment variable:
-    /// BetterAuthOptions__BETTER_AUTH_URL
+    /// BetterAuthOptions__BaseURL
     /// </summary>
     public string? BaseURL { get; set; }
 
@@ -32,8 +32,7 @@ internal sealed class BetterAuthOptions
     ///
     /// By default Better Auth will look for
 	/// the following environment variables:
-	/// BetterAuthOptions__BETTER_AUTH_SECRET,
-	/// BetterAuthOptions__AUTH_SECRET
+	/// BetterAuthOptions__Secret,
     /// If none of these environment
 	/// variables are set,
 	/// it will default to
@@ -55,20 +54,9 @@ internal sealed class BetterAuthOptions
     public string? Secret { get; set; }
 
     /// <summary>
-    /// Database connection string.
-    /// </summary>
-    public string? Database { get; set; }
-
-    /// <summary>
-    /// Secondary storage connection string.
-    /// This is used to store session and rate limit data.
-    /// </summary>
-    public string? SecondaryStorage { get; set; }
-
-    /// <summary>
     /// Email verification configuration
     /// </summary>
-    public bool? EmailVerification { get; set; }
+    public EmailVerificationOptions? EmailVerification { get; set; }
 
     /// <summary>
     /// Email and password authentication
@@ -79,6 +67,11 @@ internal sealed class BetterAuthOptions
     /// list of social providers
     /// </summary>
     public SocialProvidersOptions? SocialProviders { get; set; }
+
+    /// <summary>
+    /// To be implemented in the future.
+    /// </summary>
+    //public BetterAuthPlugin BetterAuthPlugin { get; set; }
 
     /// <summary>
     /// User configuration

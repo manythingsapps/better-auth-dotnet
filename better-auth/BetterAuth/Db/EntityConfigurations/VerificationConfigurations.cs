@@ -4,9 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BetterAuth.Db.EntityConfigurations;
 
-public partial class VerificationConfigurations : IEntityTypeConfiguration<Verification>
+/// <summary>
+/// Configuration for the generic Account entity.
+/// 
+/// inherit to provide additional configuration.
+/// </summary>
+/// <typeparam name="T">Default string</typeparam>
+public partial class VerificationConfigurations<T> : IEntityTypeConfiguration<Verification<T>>
 {
-    public void Configure(EntityTypeBuilder<Verification> builder)
+    public virtual void Configure(EntityTypeBuilder<Verification<T>> builder)
     {
         builder
             .HasKey(s => s.Id);
@@ -18,11 +24,32 @@ public partial class VerificationConfigurations : IEntityTypeConfiguration<Verif
             .IsRequired();
 
         builder.Property(s => s.ExpiresAt)
-            .IsRequired();        
+            .IsRequired();
 
         builder.Property(a => a.CreatedAt)
-            .IsRequired();
+            .IsRequired()
+            .HasValueGenerator<DateTimeUtcGenerator>()
+            .ValueGeneratedOnAdd();
+
         builder.Property(a => a.UpdatedAt)
-            .IsRequired();
+            .IsRequired()
+            .HasValueGenerator<DateTimeUtcGenerator>()
+            .ValueGeneratedOnAddOrUpdate();
+    }
+}
+
+
+/// <summary>
+/// Default Verification configuration with string as the ID type.
+/// </summary>
+public partial class VerificationConfigurations : VerificationConfigurations<string>
+{
+    public override void Configure(EntityTypeBuilder<Verification<string>> builder)
+    {
+        base.Configure(builder);
+        builder
+            .Property(x => x.Id)
+            .HasValueGenerator<GuidToStringGenerator>()
+            .ValueGeneratedOnAdd();
     }
 }

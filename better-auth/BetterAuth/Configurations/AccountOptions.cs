@@ -1,8 +1,6 @@
-﻿using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+﻿namespace BetterAuth.Configurations;
 
-namespace BetterAuth.Configurations;
-
-internal sealed class AccountOptions
+public sealed class AccountOptions
 {
     /// <summary>
     /// The model name for the account. Defaults to "account".
@@ -20,7 +18,7 @@ internal sealed class AccountOptions
 
 }
 
-internal sealed class AccountLinking
+public sealed class AccountLinking
 {
     private string[]? _trustedProviders;
 

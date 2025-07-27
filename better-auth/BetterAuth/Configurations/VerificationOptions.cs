@@ -1,6 +1,6 @@
 ﻿namespace BetterAuth.Configurations;
 
-internal sealed class VerificationOptions
+public sealed class VerificationOptions
 {
     /// <summary>
     /// Change the modelName of the verification table

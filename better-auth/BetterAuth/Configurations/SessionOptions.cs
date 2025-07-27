@@ -1,8 +1,6 @@
-﻿using BetterAuth.Db.Entities;
+﻿namespace BetterAuth.Configurations;
 
-namespace BetterAuth.Configurations;
-
-internal sealed class SessionOptions
+public sealed class SessionOptions
 {
     /// <summary>
     /// The model name for the session.
@@ -80,7 +78,7 @@ internal sealed class SessionOptions
     public int? FreshAge { get; set; } = 60 * 60 * 24;
 }
 
-internal sealed class CookieCache
+public sealed class CookieCache
 {
     /// <summary>
     /// max age of the cookie

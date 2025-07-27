@@ -1,6 +1,6 @@
 ﻿namespace BetterAuth.Configurations;
 
-internal sealed class UserOptions
+public sealed class UserOptions
 {
     /// <summary>
     /// The model name for the user. Defaults to "user".
@@ -18,7 +18,7 @@ internal sealed class UserOptions
     public DeleteUser? DeleteUser { get; set; }
 }
 
-internal sealed class ChangeEmail
+public sealed class ChangeEmail
 {
     /// <summary>
     /// Enable change email functionality
@@ -35,7 +35,7 @@ internal sealed class ChangeEmail
     private bool? RequireEmailVerification { get; set; } = true;
 }
 
-internal sealed class DeleteUser
+public sealed class DeleteUser
 {
     /// <summary>
     /// Enable user deletion functionality

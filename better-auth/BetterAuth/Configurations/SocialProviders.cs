@@ -26,14 +26,16 @@ internal enum SocialProvidersList
     notion,
 }
 
-internal sealed class SocialProvidersOptions
+public sealed class SocialProvidersOptions
 {
-    private Dictionary<string, bool>? _socialProviders;
+    private Dictionary<string, EnabledOption>? _socialProviders;
 
-    public Dictionary<string, bool>? SocialProviders
+    public Dictionary<string, EnabledOption>? SocialProviders
     { 
         get => _socialProviders;
         set => _socialProviders = Enum.GetNames(typeof(SocialProvidersList))
-            .ToDictionary(provider => provider, provider => value?.GetValueOrDefault(provider) ?? false);
+            .ToDictionary(provider => provider, provider => value?.GetValueOrDefault(provider) ?? new EnabledOption(false));
     }
 }
+
+public sealed record EnabledOption(bool? Enabled);
