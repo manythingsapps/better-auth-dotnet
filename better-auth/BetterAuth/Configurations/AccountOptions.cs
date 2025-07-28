@@ -3,11 +3,6 @@
 public sealed class AccountOptions
 {
     /// <summary>
-    /// The model name for the account. Defaults to "account".
-    /// </summary>
-    public string? ModelName { get; set; } = "account";
-
-    /// <summary>
     /// When enabled (true), the user account data (accessToken, idToken, refreshToken, etc.)
 	/// will be updated on sign in with the latest data from the provider.
     ///
@@ -15,10 +10,28 @@ public sealed class AccountOptions
     /// </summary>
     public bool? UpdateAccountOnSignIn { get; set; } = true;
 
+    /// <summary>
+    /// Configuration for account linking.
+    /// </summary>
+    public AccountLinkingOptions? AccountLinking { get; set; }
 
+    /// <summary>
+    /// Encrypt OAuth tokens
+    /// 
+    /// By default, OAuth tokens (access tokens, refresh tokens, ID tokens) are stored in plain text in the database.
+    /// This poses a security risk if your database is compromised, as attackers could gain access to user accounts
+    /// on external services.
+    /// 
+    /// When enabled, tokens are encrypted using AES-256-GCM before storage, providing protection against:
+    /// - Database breaches and unauthorized access to raw token data
+    /// - Internal threats from database administrators or compromised credentials
+    /// - Token exposure in database backups and logs
+    /// @default false
+    /// </summary>
+    public bool? EncryptOAuthTokens { get; set; } = false;
 }
 
-public sealed class AccountLinking
+public sealed class AccountLinkingOptions
 {
     private string[]? _trustedProviders;
 

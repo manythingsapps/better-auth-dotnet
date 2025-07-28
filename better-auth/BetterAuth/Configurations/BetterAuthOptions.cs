@@ -97,4 +97,26 @@ public sealed class BetterAuthOptions
     /// List of trusted origins.
     /// </summary>
     public string[]? TrustedOrigins { get; set; }
+
+    /// <summary>
+    /// Rate limiting configuration
+    /// </summary>
+    public RateLimitOptions? RateLimit { get; set; }
+
+    /// <summary>
+    /// Advanced options
+    /// </summary>
+    public AdvancedOptions? Advanced { get; set; }
+
+    /// <summary>
+    /// API error handling
+    /// </summary>
+    public OnAPIErrorOptions? OnAPIError { get; set; }
+
+    /// <summary>
+    /// Disabled paths
+    /// 
+    /// Paths you want to disable.
+    /// </summary>
+    public string[]? DisabledPaths { get; set; }
 }

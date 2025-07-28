@@ -3,13 +3,6 @@
 public sealed class SessionOptions
 {
     /// <summary>
-    /// The model name for the session.
-    /// 
-    /// @default "session"
-    /// </summary>
-    public string? ModelName { get; set; } = "session";
-
-    /// <summary>
     /// Expiration time for the session token. The value
     /// should be in seconds.
     /// @default 7 days (60 * 60 * 24 * 7)

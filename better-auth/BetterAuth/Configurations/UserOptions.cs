@@ -3,11 +3,6 @@
 public sealed class UserOptions
 {
     /// <summary>
-    /// The model name for the user. Defaults to "user".
-    /// </summary>
-    public string? ModelName { get; set; } = "user";
-
-    /// <summary>
     /// Changing email configuration
     /// </summary>
     public ChangeEmail? ChangeEmail { get; set; }
