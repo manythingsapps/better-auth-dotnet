@@ -19,7 +19,7 @@ public partial class Verification<T>
 /// <summary>
 /// Base Verification class with string as the ID type.
 /// </summary>
-partial class Verification : Verification<string>
+public partial class Verification : Verification<string>
 {
     
 }
